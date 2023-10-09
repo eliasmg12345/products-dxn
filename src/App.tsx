@@ -1,13 +1,13 @@
 
 import './App.css'
 import { Metric } from './components/Metric'
-import Product from './components/Product'
+import Products from './components/Products'
 
 function App() {
 
   return (
     <div>
-      <Product />
+      <Products />
       <Metric />
     </div>
   )

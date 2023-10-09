@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { refresh } from "../context/productSlice"
+import { editProduct, refresh } from "../context/productSlice"
 import { Product } from "../interfaces/product"
 import { useAppDispatch } from "./store"
 
@@ -22,12 +22,27 @@ export const useProductActions = () => {
     const dispatch = useAppDispatch()
 
     const refreshProductsAction = async () => {
-        dispatch(refresh(data))
+        try {
+            const products = data;
+            dispatch(refresh(products))
+        } catch (error) {
+            console.log(error);
+        }
     }
-    useEffect(()=>{
-        refreshProductsAction()
-    },[])
 
-    return {  }
+    const editProducAction = async ({ id, price, name }: Product) => {
+        try {
+            dispatch(editProduct({ id, price, name }))
+        } catch (e) {
+            console.log(e);
+
+        }
+    }
+
+    useEffect(() => {
+        refreshProductsAction()
+    }, [])
+
+    return { editProducAction }
 }
 
