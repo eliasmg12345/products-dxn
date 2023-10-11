@@ -11,10 +11,11 @@ const Products = () => {
   console.log(products);
 
   return (
-    <div className="w-4/6">
-      <h1>Productos</h1>
-      <div className="grid grid-cols-3 gap-4">
-
+    <div className="w-2/3">
+      <header className="flex justify-between items-center py-5">
+        <h1>Productos</h1>
+      </header>
+      <div className="grid grid-cols-2 justify-center items-center gap-4">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}

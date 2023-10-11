@@ -1,6 +1,8 @@
 
 export const Metric = () => {
   return (
-    <div>Metric</div>
+    <div className="w-1/3 border border-gray-700">
+      
+    </div>
   )
 }
