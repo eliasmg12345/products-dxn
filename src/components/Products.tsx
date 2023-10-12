@@ -9,7 +9,7 @@ const Products = () => {
   console.log(products);
 
   return (
-    <div className="w-2/3">
+    <div className="w-3/4">
       <header className="flex justify-between items-center py-5">
         <h1>Productos</h1>
       </header>

@@ -36,10 +36,10 @@ const Product: FC<Props> = ({ product }) => {
         <div className="bg-neutral-700 p-2 rounded-md flex flex-col">
             <div className="flex gap-5">
                 <img
-                    className="w-20 rounded-full object-center pb-1"
+                    className="w-16 rounded-full object-center pb-1"
                     src={product.image}
                     alt={`product - ${product.image}`} />
-                <div className="text-lg font-bold text-center w-full">
+                <div className="font-bold text-center w-full">
                     <p>{product.name}</p>
                     <p>Bs. {product.price}</p>
 
