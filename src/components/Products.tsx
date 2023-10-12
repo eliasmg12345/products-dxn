@@ -1,12 +1,10 @@
 
 import { useAppSelector } from "../hooks/store"
-import { useProductActions } from "../hooks/useProductActions";
 import Product from "./Product";
 
 const Products = () => {
 
-  const products = useAppSelector(state => state.products.products)
-  const { } = useProductActions()
+  const products = useAppSelector(state => state.products)
 
   console.log(products);
 
