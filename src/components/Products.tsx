@@ -13,7 +13,7 @@ const Products = () => {
       <header className="flex justify-between items-center py-5">
         <h1>Productos</h1>
       </header>
-      <div className="grid grid-cols-2 justify-center items-center gap-4">
+      <div className="grid grid-cols-1 justify-center items-center gap-4">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}
