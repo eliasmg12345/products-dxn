@@ -47,11 +47,6 @@ const data = [
     },
 ]
 
-/*
-const Products_INITIAL_STATE: ProductState = {
-    products: []
-}*/
-
 const Products_INITIAL_STATE: Product[] = (() => {
     const persistedState = localStorage.getItem('products_dxn')
     return persistedState ? JSON.parse(persistedState).products : data

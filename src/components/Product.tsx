@@ -1,6 +1,7 @@
 import { FC, useState, ChangeEvent, useMemo } from "react";
 import { useProductActions } from "../hooks/useProductActions";
 import { Product } from "../interfaces/product";
+import { useMetricActions } from "../hooks/useMetricActions";
 
 interface Props {
     product: Product
@@ -10,12 +11,12 @@ const Product: FC<Props> = ({ product }) => {
     const [inputValue, setInputValue] = useState(product.price)
     const [isEditPrice, setIsEditPrice] = useState(false)
     const [touched, setTouched] = useState(false)
-    console.log(inputValue);
-
+    const [cantidad, setCantidad] = useState(0)
 
     const isNotValid = useMemo(() => inputValue <= 0 && touched, [inputValue, touched])
 
     const { editProducAction } = useProductActions()
+    const { addMetricAction } = useMetricActions()
 
     const onInputValueChanged = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(Number(e.target.value))
@@ -30,6 +31,10 @@ const Product: FC<Props> = ({ product }) => {
         }
         editProducAction(updateProduct)
         setIsEditPrice(false)
+    }
+
+    if (cantidad > 0) {
+        addMetricAction({ productId: product.id, cantidad })
     }
 
     return (
@@ -50,10 +55,20 @@ const Product: FC<Props> = ({ product }) => {
             <div className="flex gap-2">
                 <div className="flex flex-col w-1/3">
                     <button
-                        className="font-extrabold hover:border-blue-700 border border-sky-500 rounded-lg mb-1"
+                        type="button"
+                        onClick={() => {
+                            if (cantidad > 10) return
+                            setCantidad(cantidad + 1)
+                        }}
+                        className="font-extrabold text-xl hover:border-blue-700 border border-sky-500 rounded-lg mb-1"
                     >+</button>
                     <button
-                        className="font-extrabold border border-rose-300 hover:border-rose-600 rounded-lg"
+                        type="button"
+                        onClick={() => {
+                            if (cantidad < 0) return
+                            setCantidad(cantidad - 1)
+                        }}
+                        className="font-extrabold text-xl border border-rose-300 hover:border-rose-600 rounded-lg"
                     >-</button>
                 </div>
 
@@ -65,7 +80,7 @@ const Product: FC<Props> = ({ product }) => {
                                 value={inputValue}
                                 onBlur={() => setTouched(true)}
                                 onChange={onInputValueChanged}
-                                className={isNotValid ? `border border-red-400 text-gray-700` : 'text-gray-700 w-2/3'}
+                                className={isNotValid ? `border border-red-400 text-gray-700 w-2/3 rounded-lg text-center` : 'text-gray-700 w-2/3 rounded-lg text-center'}
                             />
                             <button
                                 onClick={onSave}

@@ -1,5 +1,6 @@
 import { Middleware, configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productSlice";
+import metricReducer from "./metricSlice";
 
 const persistanceLocalStorageMiddleware: Middleware = store => next => action => {
     next(action)
@@ -9,6 +10,7 @@ const persistanceLocalStorageMiddleware: Middleware = store => next => action =>
 export const store = configureStore({
     reducer: {
         products: productReducer,
+        metrics: metricReducer
     },
     middleware: [persistanceLocalStorageMiddleware]
 })
