@@ -10,13 +10,15 @@ const Product: FC<Props> = ({ product }) => {
     const [inputValue, setInputValue] = useState(product.price)
     const [isEditPrice, setIsEditPrice] = useState(false)
     const [touched, setTouched] = useState(false)
+    console.log(inputValue);
+
 
     const isNotValid = useMemo(() => inputValue <= 0 && touched, [inputValue, touched])
 
     const { editProducAction } = useProductActions()
 
     const onInputValueChanged = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value)
+        setInputValue(Number(e.target.value))
     }
 
     const onSave = () => {
@@ -54,13 +56,13 @@ const Product: FC<Props> = ({ product }) => {
                         className="font-extrabold border border-rose-300 hover:border-rose-600 rounded-lg"
                     >-</button>
                 </div>
-                
+
                 <div className="flex flex-col gap-x-1 w-2/3 content-center h-full items-center">
                     {isEditPrice ? (
                         <div className="">
                             <input
                                 type="number"
-                                value={Number(inputValue)}
+                                value={inputValue}
                                 onBlur={() => setTouched(true)}
                                 onChange={onInputValueChanged}
                                 className={isNotValid ? `border border-red-400 text-gray-700` : 'text-gray-700 w-2/3'}
