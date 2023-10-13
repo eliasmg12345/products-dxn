@@ -7,8 +7,8 @@ export const useMetricActions = () => {
 
     const dispatch = useAppDispatch()
 
-    const addMetricAction = ({ productId, cantidad }: Metric) => {
-        dispatch(addMetric({ productId, cantidad }))
+    const addMetricAction = ({ productId, cantidad,name }: Metric) => {
+        dispatch(addMetric({ productId, cantidad,name }))
     }
 
 

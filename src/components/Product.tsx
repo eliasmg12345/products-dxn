@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, useMemo } from "react";
+import { FC, useState, ChangeEvent, useMemo, useEffect } from "react";
 import { useProductActions } from "../hooks/useProductActions";
 import { Product } from "../interfaces/product";
 import { useMetricActions } from "../hooks/useMetricActions";
@@ -33,9 +33,13 @@ const Product: FC<Props> = ({ product }) => {
         setIsEditPrice(false)
     }
 
-    if (cantidad > 0) {
-        addMetricAction({ productId: product.id, cantidad })
-    }
+    useEffect(() => {
+        if (cantidad > 0) {
+            addMetricAction({ productId: product.id, cantidad, name: product.name })
+        }
+    }, [cantidad])
+
+
 
     return (
         <div className="bg-neutral-700 p-2 rounded-md flex flex-col">
@@ -47,8 +51,6 @@ const Product: FC<Props> = ({ product }) => {
                 <div className="font-bold text-center w-full">
                     <p>{product.name}</p>
                     <p>Bs. {product.price}</p>
-
-
                 </div>
 
             </div>
@@ -65,7 +67,7 @@ const Product: FC<Props> = ({ product }) => {
                     <button
                         type="button"
                         onClick={() => {
-                            if (cantidad < 0) return
+                            if (cantidad <= 0) return
                             setCantidad(cantidad - 1)
                         }}
                         className="font-extrabold text-xl border border-rose-300 hover:border-rose-600 rounded-lg"

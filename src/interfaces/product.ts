@@ -8,4 +8,5 @@ export interface Product {
 export interface Metric {
     productId: string;
     cantidad: number;
+    name:string;
 }

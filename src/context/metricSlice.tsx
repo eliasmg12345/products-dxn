@@ -3,10 +3,7 @@ import { Metric } from "../interfaces/product";
 
 
 const Initial_Metric: Metric[] = [
-    {
-        productId: '',
-        cantidad: 0,
-    }
+   
 ]
 
 export const metricSlice = createSlice({

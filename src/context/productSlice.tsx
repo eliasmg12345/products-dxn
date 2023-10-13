@@ -14,36 +14,37 @@ const data = [
         id: '2',
         name: 'Spirulina',
         image: getImagenUrl('products/spirulina.jpg'),
-
         price: 300
     },
     {
         id: '3',
         name: 'Cocozhi',
         image: getImagenUrl('products/cocozhi.jpg'),
-
         price: 200
     },
     {
         id: '4',
         name: 'Nutrizhi',
         image: getImagenUrl('products/spirulina.jpg'),
-
         price: 600
     },
     {
         id: '5',
         name: 'cocozhi',
         image: getImagenUrl('products/cocozhi.jpg'),
-
         price: 200
     },
     {
         id: '6',
         name: 'Lemonzhi',
         image: getImagenUrl('products/lemonzhi.jpg'),
-
         price: 250
+    },
+    {
+        id: '7',
+        name: 'Nutrizhi',
+        image: getImagenUrl('products/spirulina.jpg'),
+        price: 306
     },
 ]
 
