@@ -12,6 +12,8 @@ export const Metric = () => {
   useEffect(() => {
     if ((totalPV - totalPVs) > 0) {
       setIsExced(true)
+    } else {
+      setIsExced(false)
     }
   }, [metrics])
 
@@ -38,24 +40,31 @@ export const Metric = () => {
     <div className="w-2/4 border border-gray-700">
       <label htmlFor="totalPV">Máximo pv: </label>
       <input
-        className="text-gray-500 rounded-lg p-0 text-center w-12"
+        className="text-gray-500 rounded-lg p-0 text-center w-12 m-3"
         type="text"
         name="totalPV"
         value={totalPV}
         onChange={handleChangeDatos}
       />
-      <h1 className="mb-6">Para llegar a los {totalPV} PV</h1>
+
       {
         productWithAmount.map((pro, i) =>
           pro.cantidad > 0 ? (
-            <p key={i}>{pro.cantidad}-{pro.name}={pro.cantidad * pro.valuePV}pv</p>
+            <div key={i}>
+              <div className="flex">
+                <p>{pro.cantidad}-</p>
+                <p className="truncate">{pro.name}</p>
+                <p>= {(pro.cantidad * pro.valuePV).toFixed(2)}pv</p>
+              </div>
+              <hr className="p-1 m-1" />
+            </div>
           ) : ''
         )
       }
-      <hr className="m-3" />
       <div>
-        <h1 className="text-lg"> <span className={`text-sm ${isExced ? 'text-green-500' : 'text-rose-500'}   `}>{totalPV - totalPVs} </span>Total:{totalPVs} PVs</h1>
-        <h1>Total:Bs {totalPrice}</h1>
+        <h1>Total</h1>
+        <h1 className="text-lg"> <span className={isExced ? 'text-green-500 text-xs' : 'text-rose-500 text-xs'}>{(totalPV - totalPVs).toFixed(2)} </span> {totalPVs.toFixed(1)} PVs</h1>
+        <h1>Bs {totalPrice.toFixed(1)}</h1>
       </div>
     </div>
   )

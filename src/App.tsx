@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className='bg-sky-950 text-white'>
-      <div className='flex h-full p-5 gap-5'>
+      <div className='flex h-full p-1 gap-1'>
         <Products />
         <Metric />
       </div>
