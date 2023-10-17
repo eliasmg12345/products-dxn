@@ -8,43 +8,50 @@ const data = [
         id: '1',
         name: 'Cocozhi',
         image: getImagenUrl('products/cocozhi.jpg'),
-        price: 200
+        price: 192,
+        value: 6,
     },
     {
         id: '2',
         name: 'Spirulina',
         image: getImagenUrl('products/spirulina.jpg'),
-        price: 300
+        price: 358,
+        value: 16
     },
     {
         id: '3',
-        name: 'Cocozhi',
+        name: 'Vita Cafe',
         image: getImagenUrl('products/cocozhi.jpg'),
-        price: 200
+        price: 198,
+        value: 6,
     },
     {
         id: '4',
         name: 'Nutrizhi',
         image: getImagenUrl('products/spirulina.jpg'),
-        price: 600
+        price: 271,
+        value: 10,
     },
     {
         id: '5',
-        name: 'cocozhi',
+        name: 'Zhi Mocha',
         image: getImagenUrl('products/cocozhi.jpg'),
-        price: 200
+        price: 195,
+        value: 6,
     },
     {
         id: '6',
         name: 'Lemonzhi',
         image: getImagenUrl('products/lemonzhi.jpg'),
-        price: 250
+        price: 126,
+        value: 5,
     },
     {
         id: '7',
-        name: 'Nutrizhi',
+        name: 'Coffee 3 in 1',
         image: getImagenUrl('products/spirulina.jpg'),
-        price: 306
+        price: 162,
+        value: 5,
     },
 ]
 
@@ -58,10 +65,11 @@ export const productSlice = createSlice({
     initialState: Products_INITIAL_STATE,
     reducers: {
         editProduct: (state, action: PayloadAction<Product>) => {
-            const { id, price } = action.payload
+            const { id, price, value } = action.payload
             const foundProduct = state.find(product => product.id === id)
             if (foundProduct) {
                 foundProduct.price = price
+                foundProduct.value = value
             }
         }
     }

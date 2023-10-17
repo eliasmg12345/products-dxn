@@ -3,10 +3,10 @@ export interface Product {
     name: string;
     image: string;
     price: number;
+    value: number;
 }
 
 export interface Metric {
     productId: string;
     cantidad: number;
-    name:string;
 }

@@ -16,7 +16,7 @@ const Product: FC<Props> = ({ product }) => {
     const isNotValid = useMemo(() => inputValue <= 0 && touched, [inputValue, touched])
 
     const { editProducAction } = useProductActions()
-    const { addMetricAction } = useMetricActions()
+    const { addMetricAction, updateMetricAction } = useMetricActions()
 
     const onInputValueChanged = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(Number(e.target.value))
@@ -33,13 +33,18 @@ const Product: FC<Props> = ({ product }) => {
         setIsEditPrice(false)
     }
 
+    const [isFirst, setIsFirst] = useState(true)
+
+    const metric = { productId: product.id, cantidad, name: product.name }
+
+
     useEffect(() => {
-        if (cantidad > 0) {
-            addMetricAction({ productId: product.id, cantidad, name: product.name })
+        if (cantidad === 1 && isFirst) {
+            addMetricAction(metric)
+            setIsFirst(false)
         }
+        updateMetricAction(metric)
     }, [cantidad])
-
-
 
     return (
         <div className="bg-neutral-700 p-2 rounded-md flex flex-col">
@@ -51,6 +56,7 @@ const Product: FC<Props> = ({ product }) => {
                 <div className="font-bold text-center w-full">
                     <p>{product.name}</p>
                     <p>Bs. {product.price}</p>
+                    <p>{product.value} PV</p>
                 </div>
 
             </div>
@@ -62,7 +68,7 @@ const Product: FC<Props> = ({ product }) => {
                             if (cantidad > 10) return
                             setCantidad(cantidad + 1)
                         }}
-                        className="font-extrabold text-xl hover:border-blue-700 border border-sky-500 rounded-lg mb-1"
+                        className="font-extrabold text-xl hover:border-blue-700 border border-sky-400 rounded-lg mb-1"
                     >+</button>
                     <button
                         type="button"
@@ -70,7 +76,7 @@ const Product: FC<Props> = ({ product }) => {
                             if (cantidad <= 0) return
                             setCantidad(cantidad - 1)
                         }}
-                        className="font-extrabold text-xl border border-rose-300 hover:border-rose-600 rounded-lg"
+                        className="font-extrabold text-xl border border-rose-500 hover:border-rose-700 rounded-lg"
                     >-</button>
                 </div>
 
@@ -97,7 +103,7 @@ const Product: FC<Props> = ({ product }) => {
                     ) : (
                         <button
                             onClick={() => setIsEditPrice(true)}
-                            className="border border-green-700 hover:border-green-600 rounded-lg p-1 w-full"
+                            className="border border-green-600 hover:border-green-400 rounded-lg p-1 w-full"
                         >Cambiar Precio</button>
                     )}
                 </div>

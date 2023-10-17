@@ -8,12 +8,11 @@ export const useProductActions = () => {
     const dispatch = useAppDispatch()
 
 
-    const editProducAction = async ({ id, price, name, image }: Product) => {
+    const editProducAction = async ({ id, price, name, image, value }: Product) => {
         try {
-            dispatch(editProduct({ id, price, name, image }))
+            dispatch(editProduct({ id, price, name, image, value }))
         } catch (e) {
             console.log(e);
-
         }
     }
 
