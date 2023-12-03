@@ -110,6 +110,49 @@ const data = [
         price: 919,
         value: 39.7,
     },
+    {
+        id: '16',
+        name: 'Ootea Zhi Mocha Mix',
+        image: getImagenUrl('products/OoteaZhi.jpg'),
+        price: 212,
+        value: 7.1,
+    },
+    {
+        id: '17',
+        name: 'Ootea Eu Cafe Mix',
+        image: getImagenUrl('products/Ootea.jpg'),
+        price: 188,
+        value: 6.3,
+    },
+    {
+        id: '18',
+        name: 'Ootea Cordyceps Coffe Mix',
+        image: getImagenUrl('products/OoteaCordyceps.jpg'),
+        price: 181,
+        value: 5.9,
+    },
+    {
+        id: '19',
+        name: 'Ootea Coffee Mix 2 in 1',
+        image: getImagenUrl('products/OoteaCoffee.jpg'),
+        price: 220,
+        value: 7.4,
+    },
+    {
+        id: '20',
+        name: 'Ootea Llinghzi Coffee Mix 3 in 1',
+        image: getImagenUrl('products/OoteaLlinghzi.jpg'),
+        price: 175,
+        value: 5.9,
+    },
+    {
+        id: '21',
+        name: 'Ootea Vita Cafe Mix',
+        image: getImagenUrl('products/OoteaVita.jpg'),
+        price: 344,
+        value: 13,
+    },
+    
 ]
 
 const Products_INITIAL_STATE: Product[] = (() => {
